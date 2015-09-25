@@ -16,5 +16,7 @@ RUN pip install flask && \
     pip install flipflop && \
     pip install coverage
 
+ADD app /app
+
 WORKDIR /app
 CMD python app.py
