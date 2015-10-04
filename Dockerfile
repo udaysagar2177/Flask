@@ -2,7 +2,6 @@ FROM ubuntu:14.04
 
 RUN apt-get update
 RUN apt-get -y install python python-pip
-RUN pip install flask
 RUN pip install flask && \
     pip install flask-login && \
     pip install flask-openid && \
@@ -15,8 +14,9 @@ RUN pip install flask && \
     pip install guess_language && \
     pip install flipflop && \
     pip install coverage
+RUN apt-get install -y vim wget curl net-tools 
 
-ADD app /app
-
-WORKDIR /app
-CMD python app.py
+EXPOSE 5000
+ADD api /api
+WORKDIR /api
+CMD python run.py
